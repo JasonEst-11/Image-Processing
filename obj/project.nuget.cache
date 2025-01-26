@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "RybW7LCyMMg=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\esteb\\Desktop\\Projects\\Test\\Test.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\esteb\\.nuget\\packages\\sixlabors.imagesharp\\3.1.6\\sixlabors.imagesharp.3.1.6.nupkg.sha512"
+  ],
+  "logs": []
+}
