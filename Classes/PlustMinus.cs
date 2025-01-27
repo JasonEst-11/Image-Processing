@@ -2,6 +2,8 @@
 using SixLabors.ImageSharp.PixelFormats;
 using Test.Interfaces;
 
+namespace Test.Classes;
+
 public class PlusMinus : IProcessingStrategy
 {
     public int? Plus { get; set; }

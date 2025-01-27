@@ -1,5 +1,6 @@
 
 using SixLabors.ImageSharp.PixelFormats;
+using Test.Classes;
 using Test.Interfaces;
 
 public class ImageProcessingContext

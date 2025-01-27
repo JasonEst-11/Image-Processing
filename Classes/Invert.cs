@@ -1,6 +1,8 @@
 using SixLabors.ImageSharp.PixelFormats;
 using Test.Interfaces;
 
+namespace Test.Classes;
+
 class Invert : IProcessingStrategy
 {
     public void Process(ref Rgba32 pixel)
