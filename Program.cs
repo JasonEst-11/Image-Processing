@@ -5,5 +5,5 @@ var images = ImageList.GetImages();
 foreach (string image in images)
 {
     ImageProcessing processing = new ImageProcessing("image_in/" + image);
-    processing.Execute(image);
+    processing.PLusMinus(image,50,null);
 }
