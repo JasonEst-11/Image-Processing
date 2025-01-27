@@ -19,7 +19,7 @@ public class ImageProcessing
         {
             for (int y = 0; y < image.Height; y++)
             {
-                for (int x = 0; x < image.Width; x++)
+                for (int x = 0; x < image.Width / 2; x++)
                 {
                     Rgba32 pixel = image[x, y];
 
