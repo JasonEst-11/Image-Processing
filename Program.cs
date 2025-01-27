@@ -2,8 +2,12 @@
 
 ImageList.ClearOuptut();
 var images = ImageList.GetImages();
+
+//Set processing
+ImageProcessingContext process = new(new PlusMinus(null,70));
 foreach (string image in images)
 {
-    ImageProcessing processing = new ImageProcessing("image_in/" + image);
-    processing.PLusMinus(image,50,null);
+    var path = "image_in/" + image;
+    ImageProcessing processing = new(path, process);
+    processing.Execute(image);
 }

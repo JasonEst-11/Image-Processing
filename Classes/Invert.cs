@@ -5,6 +5,8 @@ class Invert : IProcessingStrategy
 {
     public void Process(ref Rgba32 pixel)
     {
-        throw new NotImplementedException();
+        pixel.R = (byte)(255 - pixel.R);
+        pixel.G = (byte)(255 - pixel.G);
+        pixel.B = (byte)(255 - pixel.B);
     }
 }

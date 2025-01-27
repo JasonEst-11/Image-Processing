@@ -6,13 +6,15 @@ namespace Test;
 public class ImageProcessing
 {
     private readonly Image<Rgba32> image;
+    private readonly ImageProcessingContext _processContext;
 
-    public ImageProcessing(string imagePath)
+    public ImageProcessing(string imagePath, ImageProcessingContext processContext)
     {
         image = Image.Load<Rgba32>(imagePath);
+        _processContext = processContext;
     }
 
-    public void Invert(string name)
+    public void Execute(string name)
     {
         for (int y = 0; y < image.Height; y++)
         {
@@ -20,46 +22,11 @@ public class ImageProcessing
             {
                 Rgba32 pixel = image[x, y];
 
-                pixel.R = (byte)(255 - pixel.R);
-                pixel.G = (byte)(255 - pixel.G);
-                pixel.B = (byte)(255 - pixel.B);
-
+                _processContext.ExecuteProcess(ref pixel);
+                
                 image[x, y] = pixel;
             }
         }
         image.Save("image_out/" + name);
-    }
-
-    public void PLusMinus(string name, int? plus = null, int? minus = null)
-    {
-        try
-        {
-            for (int y = 0; y < image.Height; y++)
-            {
-                for (int x = 0; x < image.Width; x++)
-                {
-                    Rgba32 pixel = image[x, y];
-                    if (plus.HasValue)
-                    {
-                        pixel.R = (byte)(pixel.R + plus);
-                        pixel.G = (byte)(pixel.G + plus);
-                        pixel.B = (byte)(pixel.B + plus);
-                        image[x, y] = pixel;
-                    }
-                    if (minus.HasValue)
-                    {
-                        pixel.R = (byte)(pixel.R - minus);
-                        pixel.G = (byte)(pixel.G - minus);
-                        pixel.B = (byte)(pixel.B - minus);
-                        image[x, y] = pixel;
-                    }
-                }
-            }
-            image.Save("image_out/" + name);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
     }
 }
