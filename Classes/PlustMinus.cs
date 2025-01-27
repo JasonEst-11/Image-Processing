@@ -1,32 +1,45 @@
-
 using SixLabors.ImageSharp.PixelFormats;
+using Test.Enums;
 using Test.Interfaces;
 
 namespace Test.Classes;
 
 public class PlusMinus : IProcessingStrategy
 {
-    public int? Plus { get; set; }
-    public int? Minus { get; set; }
+    private int Value { get; set; }
+    private Operations _operation;
 
-    public PlusMinus(int? plus = null, int? minus = null)
+    public PlusMinus(int value, Operations operation)
     {
-        Plus = plus;
-        Minus = minus;
+        Value = value;
+        _operation = operation;
     }
     public void Process(ref Rgba32 pixel)
     {
-        if (Plus.HasValue)
+        switch (_operation)
         {
-            pixel.R = (byte)(pixel.R + Plus);
-            pixel.G = (byte)(pixel.G + Plus);
-            pixel.B = (byte)(pixel.B + Plus);
-        }
-        if (Minus.HasValue)
-        {
-            pixel.R = (byte)(pixel.R - Minus);
-            pixel.G = (byte)(pixel.G - Minus);
-            pixel.B = (byte)(pixel.B - Minus);
+            case Operations.Addition:
+                pixel.R = (byte)(pixel.R + Value);
+                pixel.G = (byte)(pixel.G + Value);
+                pixel.B = (byte)(pixel.B + Value);
+                break;
+            case Operations.Subtraction:
+                pixel.R = (byte)(pixel.R - Value);
+                pixel.G = (byte)(pixel.G - Value);
+                pixel.B = (byte)(pixel.B - Value);
+                break;
+            case Operations.Multiplication:
+                pixel.R = (byte)(pixel.R - Value);
+                pixel.G = (byte)(pixel.G - Value);
+                pixel.B = (byte)(pixel.B - Value);
+                break;
+            case Operations.Division:
+                pixel.R = (byte)(pixel.R - Value);
+                pixel.G = (byte)(pixel.G - Value);
+                pixel.B = (byte)(pixel.B - Value);
+                break;
+            default:
+                break;
         }
     }
 }
