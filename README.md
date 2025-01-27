@@ -1,1 +1,1 @@
-idk wtf im doing (supposedly learning image processing)
+# idk wtf im doing (supposedly learning image processing)
