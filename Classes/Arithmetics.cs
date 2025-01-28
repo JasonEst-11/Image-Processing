@@ -4,12 +4,12 @@ using Test.Interfaces;
 
 namespace Test.Classes;
 
-public class PlusMinus : IProcessingStrategy
+public class Arithmetics : IProcessingStrategy
 {
     private int Value { get; set; }
     private Operations _operation;
 
-    public PlusMinus(int value, Operations operation)
+    public Arithmetics(int value, Operations operation)
     {
         Value = value;
         _operation = operation;
