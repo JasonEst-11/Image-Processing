@@ -29,14 +29,14 @@ public class Arithmetics : IProcessingStrategy
                 pixel.B = (byte)(pixel.B - Value);
                 break;
             case Operations.Multiplication:
-                pixel.R = (byte)(pixel.R - Value);
-                pixel.G = (byte)(pixel.G - Value);
-                pixel.B = (byte)(pixel.B - Value);
+                pixel.R = (byte)(pixel.R * Value);
+                pixel.G = (byte)(pixel.G * Value);
+                pixel.B = (byte)(pixel.B * Value);
                 break;
             case Operations.Division:
-                pixel.R = (byte)(pixel.R - Value);
-                pixel.G = (byte)(pixel.G - Value);
-                pixel.B = (byte)(pixel.B - Value);
+                pixel.R = (byte)(pixel.R / Value);
+                pixel.G = (byte)(pixel.G / Value);
+                pixel.B = (byte)(pixel.B / Value);
                 break;
             default:
                 break;
