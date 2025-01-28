@@ -1,1 +1,1 @@
-# idk wtf im doing (supposedly learning image processing)
+# Learning image processing.... (But honestly I have no idea what I'm doing send help 🥲)
