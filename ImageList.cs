@@ -13,10 +13,17 @@ public static class ImageList
     }
     public static void ClearOuptut()
     {
-        string[] files = Directory.GetFiles("image_out");
-        foreach (string file in files)
+        if (Directory.Exists("image_out"))
         {
-            File.Delete(file);
+            string[] files = Directory.GetFiles("image_out");
+            foreach (string file in files)
+            {
+                File.Delete(file);
+            }
+        }
+        else
+        {
+            Directory.CreateDirectory("./image_out");
         }
     }
 }
