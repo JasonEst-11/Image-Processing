@@ -79,5 +79,53 @@ public class ImageProcessing
             Console.WriteLine(e.Message);
         }
     }
+    public void ExecuteRightHalf(string name)
+    {
+        try
+        {
+            for (int y = 0; y < image.Height; y++)
+            {
+                for (int x = 0; x < image.Width; x++)
+                {
+                    if (x > image.Width / 2)
+                    {
+                        Rgba32 pixel = image[x, y];
 
+                        _processContext.ExecuteProcess(ref pixel);
+
+                        image[x, y] = pixel;
+
+                    }
+                }
+            }
+            image.Save("image_out/" + name);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
+    public void ExecuteBottomHalf(string name)
+    {
+        try
+        {
+            for (int y = 0; y < image.Height; y++)
+            {
+                for (int x = 0; x < image.Width; x++)
+                {
+                    if (y > image.Height / 2)
+                    {
+                        Rgba32 pixel = image[x, y];
+                        _processContext.ExecuteProcess(ref pixel);
+                        image[x, y] = pixel;
+                    }
+                }
+            }
+            image.Save("image_out/" + name);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
 }

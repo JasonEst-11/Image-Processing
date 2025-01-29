@@ -8,19 +8,21 @@ var images = ImageList.GetImages();
 // ImageProcessingContext process = new(new Test.Classes.Test(100, 100));
 // ImageProcessingContext process = new(new High(true,false,true));
 var imageName = "image1.jpg";
-ImageProcessingContext process = new(new Arithmetics(100, Operations.Addition));
+ImageProcessingContext process = new(new Arithmetics(4, Operations.Division));
 ImageProcessing processing = new($"image_in/{imageName}", process);
 
+// First process will apply normally
+processing.ExecuteBottomHalf("BH.jpg");
+// Second process will apply on top of the first process 
 processing.ExecuteLeftHalf("LH.jpg");
-process.SetProcess(new High(true, false, false));
-processing.ExecuteTopHalf("TH.jpg");
 
-// int i = 0;
-// foreach (string image in images)
-// {
-//     i++;
-//     var path = "image_in/" + image;
-//     ImageProcessing processing = new(path, process);
-//     processing.Execute(image);
-//     Console.WriteLine($"Created image_out/{image} - {i}/{images.Count}");
-// }
+int i = 0;
+foreach (string image in images)
+{
+    i++;
+    var path = "image_in/" + image;
+    ImageProcessingContext processIn= new(new Test.Classes.Test(100, 100));
+    ImageProcessing p = new(path, processIn);
+    p.ExecuteLeftHalf(image);
+    Console.WriteLine($"Created {i}/{images.Count} - image_out/{image} ");
+}
