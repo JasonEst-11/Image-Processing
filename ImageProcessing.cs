@@ -19,6 +19,50 @@ public class ImageProcessing
         {
             for (int y = 0; y < image.Height; y++)
             {
+                for (int x = 0; x < image.Width; x++)
+                {
+                    Rgba32 pixel = image[x, y];
+
+                    _processContext.ExecuteProcess(ref pixel);
+
+                    image[x, y] = pixel;
+                }
+            }
+            image.Save("image_out/" + name);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
+    public void ExecuteTopHalf(string name)
+    {
+        try
+        {
+            for (int y = 0; y < image.Height / 2; y++)
+            {
+                for (int x = 0; x < image.Width; x++)
+                {
+                    Rgba32 pixel = image[x, y];
+
+                    _processContext.ExecuteProcess(ref pixel);
+
+                    image[x, y] = pixel;
+                }
+            }
+            image.Save("image_out/" + name);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
+    public void ExecuteLeftHalf(string name)
+    {
+        try
+        {
+            for (int y = 0; y < image.Height; y++)
+            {
                 for (int x = 0; x < image.Width / 2; x++)
                 {
                     Rgba32 pixel = image[x, y];
@@ -35,4 +79,5 @@ public class ImageProcessing
             Console.WriteLine(e.Message);
         }
     }
+
 }
