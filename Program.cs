@@ -5,9 +5,10 @@ ImageList.ClearOuptut();
 var images = ImageList.GetImages();
 
 //Set processing
-// ImageProcessingContext process = new(new Test.Classes.Test(100, 100));
+// ImageProcessingContext process = new(new Test.Classes.Test(null, 100));
 // ImageProcessingContext process = new(new High(true,false,true));
-ImageProcessingContext process = new(new Arithmetics(100, Operations.Addition));
+// ImageProcessingContext process = new(new Arithmetics(2, Operations.Multiplication));
+ImageProcessingContext process = new(new Invert());
 int i = 0;
 foreach (string image in images)
 {
