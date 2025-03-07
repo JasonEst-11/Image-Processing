@@ -3,7 +3,11 @@ public static class ImageList
 {
     public static List<string> GetImages()
     {
-        string[] files = Directory.GetFiles("image_in");
+        string[] imageExtensions = [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff", ".webp"];
+        string[] files = Directory.GetFiles("image_in")
+                                .Where(file => imageExtensions
+                                .Any(ext => file.EndsWith(ext, StringComparison.OrdinalIgnoreCase)))
+                                .ToArray();
         List<string> filenames = [];
         foreach (string file in files)
         {
@@ -13,10 +17,17 @@ public static class ImageList
     }
     public static void ClearOuptut()
     {
-        string[] files = Directory.GetFiles("image_out");
-        foreach (string file in files)
+        if (Directory.Exists("image_out"))
         {
-            File.Delete(file);
+            string[] files = Directory.GetFiles("image_out");
+            foreach (string file in files)
+            {
+                File.Delete(file);
+            }
+        }
+        else
+        {
+            Directory.CreateDirectory("./image_out");
         }
     }
 }
